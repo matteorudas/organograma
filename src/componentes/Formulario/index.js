@@ -4,19 +4,28 @@ import ListaSuspensa from '../ListaSuspensa';
 import { useState } from 'react';
 import './Formulario.css';
 
-const Formulario = () => {  
-
-    const times = ['Desenvolvimento', 'Marketing', 'Comercial', 'Financeiro', 'Administrativo'];
-
+const Formulario = (props) => {  
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
-    const [emial, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [imagem, setImagem] = useState('');
     const [time, setTime] = useState('');
 
     const aoSalvar = (evento) => {
         evento.preventDefault();
-        console.log('Salvando... => ' + nome + ' - ' + cargo + ' - ' + emial + ' - ' + imagem + ' - ' + time);
+        props.aoColaboradorCdtr({
+            nome,
+            cargo,
+            email,
+            imagem,
+            time
+        })
+        
+        setNome('');
+        setCargo('');
+        setEmail('');
+        setImagem('');
+        setTime('');
     }
 
     return (
@@ -39,7 +48,7 @@ const Formulario = () => {
                     obrigatorio={true} 
                     label="Email:"  
                     placeholder="Digite seu Email..."
-                    valor={emial}
+                    valor={email}
                     aoAlterado={valor => setEmail(valor)}/>
                 <CampoTexto 
                     label="Imagem:" 
@@ -49,7 +58,7 @@ const Formulario = () => {
                 <ListaSuspensa 
                     obrigatorio={true} 
                     label="Times:" 
-                    itens={times}
+                    itens={props.time}
                     valor={time}
                     aoAlterado={valor => setTime(valor)}/>      
                 <Botao>
