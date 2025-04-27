@@ -1,8 +1,14 @@
+import { MdDelete } from "react-icons/md";
 import './Colaborador.css';
 
-const Colaborador= ({nome, imagem, cargo, email, corFundo}) => {
+const Colaborador= ({nome, imagem, cargo, email, corFundo, aoDeletar, id}) => {
     return (
         <div className='colaborador'>
+            <MdDelete 
+                size={25} 
+                className='deletar' 
+                onClick={() => aoDeletar(id)}
+            />
             <div className='cabecalho' style={{backgroundColor: corFundo}}>
                 <img src={imagem} alt={nome} />
             </div>
