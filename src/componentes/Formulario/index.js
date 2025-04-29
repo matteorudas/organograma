@@ -1,5 +1,5 @@
 import Botao from '../Botao';
-import CampoTexto from '../CampoTexto';
+import Campo from '../Campo';
 import ListaSuspensa from '../ListaSuspensa';
 import { useState } from 'react';
 import './Formulario.css';
@@ -34,25 +34,25 @@ const Formulario = (props) => {
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
                 <h2>Prencha os dados do colaborador</h2>
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Nome:" 
                     placeholder="Digite seu nome..."
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}/> 
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Cargo:"  
                     placeholder="Digite seu cargo..."
                     valor={cargo}
                     aoAlterado={valor => setCargo(valor)}/>
-                <CampoTexto 
+                <Campo 
                     obrigatorio={true} 
                     label="Email:"  
                     placeholder="Digite seu Email..."
                     valor={email}
                     aoAlterado={valor => setEmail(valor)}/>
-                <CampoTexto 
+                <Campo 
                     label="Imagem:" 
                     placeholder="Informe a URL da sua imagem..."
                     valor={imagem}
@@ -72,16 +72,17 @@ const Formulario = (props) => {
                 props.cadastraTime({nome: nomeTime, cor: corTime});
                 }}>
                 <h2>Prencha os dados do novo time.</h2>
-                <CampoTexto 
+                <Campo 
                     obrigatorio
                     label="Nome:" 
                     placeholder="Digite o nome do time..."
                     valor={nomeTime}
                     aoAlterado={valor => setnomeTime(valor)}
                 /> 
-                <CampoTexto 
+                <Campo 
                     obrigatorio
-                    label="Cargo:"  
+                    type='color'
+                    label="Cor:"  
                     placeholder="Digite a cor do time..."
                     valor={corTime}
                     aoAlterado={valor => setcorTime(valor)}
